@@ -223,3 +223,14 @@ enum UserType {
   CUSTOMER
   ADMIN
 }
+
+model Agendamento {
+  id          Int      @id @default(autoincrement())
+  nome        String
+  telefone    String
+  cpf         String   @unique
+  servico     String
+  profissional String
+  data        DateTime
+  horario     String
+}

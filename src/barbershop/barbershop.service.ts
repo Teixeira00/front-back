@@ -4,6 +4,7 @@ import { LocationService } from 'src/location/location.service';
 import { BarbershopRepository } from './repositories/barbershopRepository';
 import { CreateBarbershopDto } from './dto/create-barbershop.dto';
 import { Barbershop } from './entities/barbershop.entity';
+import { PrismaService } from '../database/prisma.service';
 
 @Injectable()
 export class BarbershopService {
@@ -46,5 +47,15 @@ export class BarbershopService {
 
   remove(id: number) {
     return `This action removes a #${id} barbershop`;
+  }
+}
+
+export class AgendamentoService {
+  constructor(private readonly prisma: PrismaService) {}
+
+  async createAgendamento(data: any) {
+    return await this.prisma.agendamento.create({
+      data,
+    });
   }
 }
